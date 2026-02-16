@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Weather Chatbot</title>
+</head>
+<body>
+<h2>🌤 Weather Chatbot</h2>
+
+<input id="q" placeholder="Ask weather like: weather in Chennai">
+<button onclick="ask()">Send</button>
+
+<p id="chat"></p>
+
+<script>
+function ask(){
+ let q = document.getElementById("q").value;
+ fetch("/chat/"+q)
+ .then(res=>res.json())
+ .then(data=>{
+   document.getElementById("chat").innerHTML = "Bot: " + data.reply;
+ });
+}
+</script>
+</body>
+</html>
